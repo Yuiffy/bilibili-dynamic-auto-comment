@@ -3,3 +3,6 @@ aiohttp_socks
 loguru 
 pyyaml 
 apscheduler
+bilibili-api-python
+openai
+python-decouple

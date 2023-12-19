@@ -3,8 +3,12 @@ import sys
 import os
 import asyncio
 import uuid
+
+from bilibili_api.comment import CommentResourceType
+from decouple import config
 from loguru import logger
 from datetime import datetime, timedelta
+from bilibili_api import comment, Credential
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -202,6 +206,17 @@ class BiliUser:
             self.log.exception("点赞任务异常")
             self.errmsg.append(f"【{self.name}】 点赞任务异常,请检查日志")
 
+    @staticmethod
+    async def comment_to_a_dynamic(dynamic_id: int, message: str):
+        """给一个动态发评论"""
+        credential = Credential(sessdata=config("SESSDATA"), bili_jct=config("bili_jct"), buvid3=config("buvid3"))
+        await comment.send_comment(
+            text=message,
+            oid=dynamic_id,
+            type_=CommentResourceType.DYNAMIC,
+            credential=credential,
+        )
+
     async def sendDanmaku(self):
         """
         每日弹幕打卡
@@ -250,17 +265,21 @@ class BiliUser:
             await self.getMedals()
 
     async def start(self):
-        if self.isLogin:
-            tasks = []
-            if self.medalsNeedDo:
-                self.log.log("INFO", f"共有 {len(self.medalsNeedDo)} 个牌子未满 1500 亲密度")
-                tasks.append(self.like_v3())
-                tasks.append(self.watchinglive())
-            else:
-                self.log.log("INFO", "所有牌子已满 1500 亲密度")
-            tasks.append(self.sendDanmaku())
-            tasks.append(self.signInGroups())
-            await asyncio.gather(*tasks)
+        dynamic_id = 876861197465419782
+        message = "小岁晚安~[UPOWER_1954091502_爱你]"
+        await self.comment_to_a_dynamic(dynamic_id=dynamic_id, message=message)
+        # if self.isLogin:
+        #     tasks = []
+        #
+        #     # if self.medalsNeedDo:
+        #     #     self.log.log("INFO", f"共有 {len(self.medalsNeedDo)} 个牌子未满 1500 亲密度")
+        #     #     # tasks.append(self.like_v3())
+        #     #     # tasks.append(self.watchinglive())
+        #     # else:
+        #     #     self.log.log("INFO", "所有牌子已满 1500 亲密度")
+        #     # # tasks.append(self.sendDanmaku())
+        #     # # tasks.append(self.signInGroups())
+        #     await asyncio.gather(*tasks)
 
     async def sendmsg(self):
         if not self.isLogin:
