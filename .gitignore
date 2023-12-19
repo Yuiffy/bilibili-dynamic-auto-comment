@@ -1,6 +1,6 @@
 __pycache__
 # *.go
-*.json
+#*.json
 test.py
 go.mod
 go.sum

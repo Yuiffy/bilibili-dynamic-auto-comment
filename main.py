@@ -1,6 +1,9 @@
 import json
 import os
 import sys
+
+from bilibili_api import Credential
+from decouple import config
 from loguru import logger
 import warnings
 import asyncio
@@ -31,7 +34,7 @@ try:
     assert users['DANMAKU_CD'] >= 0, "DANMAKU_CD参数错误"
     assert users['WATCHINGLIVE'] >= 0, "WATCHINGLIVE参数错误"
     assert users['WEARMEDAL'] in [0, 1], "WEARMEDAL参数错误"
-    config = {
+    configOther = {
         "ASYNC": users['ASYNC'],
         "LIKE_CD": users['LIKE_CD'],
         # "SHARE_CD": users['SHARE_CD'],
@@ -72,12 +75,14 @@ async def main():
     startTasks = []
     catchMsg = []
     for user in users['USERS']:
-        if user['access_key']:
+        print('user=', user)
+        credential = Credential(sessdata=user.get("SESSDATA"), bili_jct=user.get("BILI_JCT"), buvid3=user.get("BUVID3"))
+        if user.get("SESSDATA"):
             biliUser = BiliUser(
-                user['access_key'],
+                credential,
                 user.get('white_uid', ''),
                 user.get('banned_uid', ''),
-                config,
+                configOther,
             )
             # initTasks.append(biliUser.init())
             startTasks.append(biliUser.start())
@@ -107,7 +112,7 @@ async def main():
             title=f"【B站粉丝牌助手推送】",
             content="  \n".join(messageList),
             **params,
-            proxy=config.get('PROXY'),
+            proxy=configOther.get('PROXY'),
         )
         log.info(f"{notifier} 已推送")
 

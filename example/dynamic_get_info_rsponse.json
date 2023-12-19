@@ -1,0 +1,323 @@
+{
+  "item": {
+    "basic": {
+      "comment_id_str": "876861197465419782",
+      "comment_type": 17,
+      "jump_url": "//www.bilibili.com/opus/876861197465419782",
+      "like_icon": {
+        "action_url": "https://i0.hdslb.com/bfs/garb/981be455806a7ecc46458e7f272a5ec9a6472c58.bin",
+        "end_url": "",
+        "id": 1688637325001,
+        "start_url": ""
+      },
+      "rid_str": "876861197465419782"
+    },
+    "id_str": "876861197465419782",
+    "modules": {
+      "module_author": {
+        "avatar": {
+          "container_size": {
+            "height": 1.35,
+            "width": 1.35
+          },
+          "fallback_layers": {
+            "is_critical_group": true,
+            "layers": [
+              {
+                "general_spec": {
+                  "pos_spec": {
+                    "axis_x": 0.675,
+                    "axis_y": 0.675,
+                    "coordinate_pos": 2
+                  },
+                  "render_spec": {
+                    "opacity": 1
+                  },
+                  "size_spec": {
+                    "height": 1,
+                    "width": 1
+                  }
+                },
+                "layer_config": {
+                  "is_critical": true,
+                  "tags": {
+                    "AVATAR_LAYER": {},
+                    "GENERAL_CFG": {
+                      "config_type": 1,
+                      "general_config": {
+                        "web_css_style": {
+                          "borderRadius": "50%"
+                        }
+                      }
+                    }
+                  }
+                },
+                "resource": {
+                  "res_image": {
+                    "image_src": {
+                      "placeholder": 6,
+                      "remote": {
+                        "bfs_style": "widget-layer-avatar",
+                        "url": "https://i0.hdslb.com/bfs/face/e498ae074beae2376da99807b96df316d407b869.jpg"
+                      },
+                      "src_type": 1
+                    }
+                  },
+                  "res_type": 3
+                },
+                "visible": true
+              },
+              {
+                "general_spec": {
+                  "pos_spec": {
+                    "axis_x": 0.8000000000000002,
+                    "axis_y": 0.8000000000000002,
+                    "coordinate_pos": 1
+                  },
+                  "render_spec": {
+                    "opacity": 1
+                  },
+                  "size_spec": {
+                    "height": 0.41666666666666663,
+                    "width": 0.41666666666666663
+                  }
+                },
+                "layer_config": {
+                  "tags": {
+                    "GENERAL_CFG": {
+                      "config_type": 1,
+                      "general_config": {
+                        "web_css_style": {
+                          "background-color": "rgb(255,255,255)",
+                          "border": "2px solid rgba(255,255,255,1)",
+                          "borderRadius": "50%",
+                          "boxSizing": "border-box"
+                        }
+                      }
+                    },
+                    "ICON_LAYER": {}
+                  }
+                },
+                "resource": {
+                  "res_image": {
+                    "image_src": {
+                      "local": 3,
+                      "src_type": 2
+                    }
+                  },
+                  "res_type": 3
+                },
+                "visible": true
+              }
+            ]
+          },
+          "mid": "1954091502"
+        },
+        "face": "https://i0.hdslb.com/bfs/face/e498ae074beae2376da99807b96df316d407b869.jpg",
+        "face_nft": false,
+        "following": true,
+        "jump_url": "//space.bilibili.com/1954091502/dynamic",
+        "label": "",
+        "mid": 1954091502,
+        "name": "岁己SUI",
+        "official_verify": {
+          "desc": "",
+          "type": 0
+        },
+        "pendant": {
+          "expire": 0,
+          "image": "",
+          "image_enhance": "",
+          "image_enhance_frame": "",
+          "n_pid": 0,
+          "name": "",
+          "pid": 0
+        },
+        "pub_action": "",
+        "pub_location_text": "",
+        "pub_time": "2023年12月19日 23:09",
+        "pub_ts": 1702998557,
+        "type": "AUTHOR_TYPE_NORMAL",
+        "vip": {
+          "avatar_subscript": 1,
+          "avatar_subscript_url": "",
+          "due_date": 1727366400000,
+          "label": {
+            "bg_color": "#FB7299",
+            "bg_style": 1,
+            "border_color": "",
+            "img_label_uri_hans": "",
+            "img_label_uri_hans_static": "https://i0.hdslb.com/bfs/vip/8d4f8bfc713826a5412a0a27eaaac4d6b9ede1d9.png",
+            "img_label_uri_hant": "",
+            "img_label_uri_hant_static": "https://i0.hdslb.com/bfs/activity-plat/static/20220614/e369244d0b14644f5e1a06431e22a4d5/VEW8fCC0hg.png",
+            "label_theme": "annual_vip",
+            "path": "",
+            "text": "年度大会员",
+            "text_color": "#FFFFFF",
+            "use_img_label": true
+          },
+          "nickname_color": "#FB7299",
+          "status": 1,
+          "theme_type": 0,
+          "type": 2
+        }
+      },
+      "module_dynamic": {
+        "additional": null,
+        "desc": null,
+        "major": {
+          "opus": {
+            "fold_action": [
+              "展开",
+              "收起"
+            ],
+            "jump_url": "//www.bilibili.com/opus/876861197465419782",
+            "pics": [],
+            "summary": {
+              "rich_text_nodes": [
+                {
+                  "emoji": {
+                    "icon_url": "https://i0.hdslb.com/bfs/garb/19b4054fb2a5a73105b9f6d6d0e8d3849c2e389d.png",
+                    "size": 2,
+                    "text": "[UPOWER_1954091502_大家]",
+                    "type": 11
+                  },
+                  "orig_text": "[UPOWER_1954091502_大家]",
+                  "text": "[UPOWER_1954091502_大家]",
+                  "type": "RICH_TEXT_NODE_TYPE_EMOJI"
+                },
+                {
+                  "emoji": {
+                    "icon_url": "https://i0.hdslb.com/bfs/garb/19b4054fb2a5a73105b9f6d6d0e8d3849c2e389d.png",
+                    "size": 2,
+                    "text": "[UPOWER_1954091502_大家]",
+                    "type": 11
+                  },
+                  "orig_text": "[UPOWER_1954091502_大家]",
+                  "text": "[UPOWER_1954091502_大家]",
+                  "type": "RICH_TEXT_NODE_TYPE_EMOJI"
+                },
+                {
+                  "emoji": {
+                    "icon_url": "https://i0.hdslb.com/bfs/garb/19b4054fb2a5a73105b9f6d6d0e8d3849c2e389d.png",
+                    "size": 2,
+                    "text": "[UPOWER_1954091502_大家]",
+                    "type": 11
+                  },
+                  "orig_text": "[UPOWER_1954091502_大家]",
+                  "text": "[UPOWER_1954091502_大家]",
+                  "type": "RICH_TEXT_NODE_TYPE_EMOJI"
+                },
+                {
+                  "orig_text": "\n",
+                  "text": "\n",
+                  "type": "RICH_TEXT_NODE_TYPE_TEXT"
+                },
+                {
+                  "emoji": {
+                    "icon_url": "https://i0.hdslb.com/bfs/garb/1b3ae35ab59777248c45f33904e4e975acbe0de8.png",
+                    "size": 2,
+                    "text": "[UP_1954091502_晚安]",
+                    "type": 10
+                  },
+                  "orig_text": "[UP_1954091502_晚安]",
+                  "text": "[UP_1954091502_晚安]",
+                  "type": "RICH_TEXT_NODE_TYPE_EMOJI"
+                },
+                {
+                  "emoji": {
+                    "icon_url": "https://i0.hdslb.com/bfs/garb/1b3ae35ab59777248c45f33904e4e975acbe0de8.png",
+                    "size": 2,
+                    "text": "[UP_1954091502_晚安]",
+                    "type": 10
+                  },
+                  "orig_text": "[UP_1954091502_晚安]",
+                  "text": "[UP_1954091502_晚安]",
+                  "type": "RICH_TEXT_NODE_TYPE_EMOJI"
+                },
+                {
+                  "orig_text": "\n",
+                  "text": "\n",
+                  "type": "RICH_TEXT_NODE_TYPE_TEXT"
+                },
+                {
+                  "emoji": {
+                    "icon_url": "https://i0.hdslb.com/bfs/garb/aa736ad09bfab4e748ef6253a0bb337f494b7773.png",
+                    "size": 2,
+                    "text": "[UPOWER_1954091502_分号分号]",
+                    "type": 11
+                  },
+                  "orig_text": "[UPOWER_1954091502_分号分号]",
+                  "text": "[UPOWER_1954091502_分号分号]",
+                  "type": "RICH_TEXT_NODE_TYPE_EMOJI"
+                },
+                {
+                  "emoji": {
+                    "icon_url": "https://i0.hdslb.com/bfs/garb/aa736ad09bfab4e748ef6253a0bb337f494b7773.png",
+                    "size": 2,
+                    "text": "[UPOWER_1954091502_分号分号]",
+                    "type": 11
+                  },
+                  "orig_text": "[UPOWER_1954091502_分号分号]",
+                  "text": "[UPOWER_1954091502_分号分号]",
+                  "type": "RICH_TEXT_NODE_TYPE_EMOJI"
+                },
+                {
+                  "emoji": {
+                    "icon_url": "https://i0.hdslb.com/bfs/garb/aa736ad09bfab4e748ef6253a0bb337f494b7773.png",
+                    "size": 2,
+                    "text": "[UPOWER_1954091502_分号分号]",
+                    "type": 11
+                  },
+                  "orig_text": "[UPOWER_1954091502_分号分号]",
+                  "text": "[UPOWER_1954091502_分号分号]",
+                  "type": "RICH_TEXT_NODE_TYPE_EMOJI"
+                },
+                {
+                  "emoji": {
+                    "icon_url": "https://i0.hdslb.com/bfs/garb/aa736ad09bfab4e748ef6253a0bb337f494b7773.png",
+                    "size": 2,
+                    "text": "[UPOWER_1954091502_分号分号]",
+                    "type": 11
+                  },
+                  "orig_text": "[UPOWER_1954091502_分号分号]",
+                  "text": "[UPOWER_1954091502_分号分号]",
+                  "type": "RICH_TEXT_NODE_TYPE_EMOJI"
+                }
+              ],
+              "text": "[UPOWER_1954091502_大家][UPOWER_1954091502_大家][UPOWER_1954091502_大家]\n[UP_1954091502_晚安][UP_1954091502_晚安]\n[UPOWER_1954091502_分号分号][UPOWER_1954091502_分号分号][UPOWER_1954091502_分号分号][UPOWER_1954091502_分号分号]"
+            },
+            "title": null
+          },
+          "type": "MAJOR_TYPE_OPUS"
+        },
+        "topic": null
+      },
+      "module_more": {
+        "three_point_items": [
+          {
+            "label": "举报",
+            "type": "THREE_POINT_REPORT"
+          }
+        ]
+      },
+      "module_stat": {
+        "comment": {
+          "count": 81,
+          "forbidden": false
+        },
+        "forward": {
+          "count": 0,
+          "forbidden": false
+        },
+        "like": {
+          "count": 282,
+          "forbidden": false,
+          "status": false
+        }
+      }
+    },
+    "type": "DYNAMIC_TYPE_WORD",
+    "visible": true
+  }
+}

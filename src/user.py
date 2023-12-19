@@ -5,10 +5,12 @@ import asyncio
 import uuid
 
 from bilibili_api.comment import CommentResourceType
+from bilibili_api.dynamic import DynamicType, Dynamic
 from decouple import config
+from glom import glom
 from loguru import logger
 from datetime import datetime, timedelta
-from bilibili_api import comment, Credential
+from bilibili_api import comment, Credential, dynamic
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -23,11 +25,12 @@ logger.add(
 
 
 class BiliUser:
-    def __init__(self, access_token: str, whiteUIDs: str = '', bannedUIDs: str = '', config: dict = {}):
+    def __init__(self, credential: Credential, whiteUIDs: str = '', bannedUIDs: str = '', config: dict = {}):
         from .api import BiliApi
 
         self.mid, self.name = 0, ""
-        self.access_key = access_token  # 登录凭证
+        # self.access_key = access_token  # 登录凭证
+        self.credential = credential
         try:
             self.whiteList = list(map(lambda x: int(x if x else 0), str(whiteUIDs).split(',')))  # 白名单UID
             self.bannedList = list(map(lambda x: int(x if x else 0), str(bannedUIDs).split(',')))  # 黑名单
@@ -206,15 +209,21 @@ class BiliUser:
             self.log.exception("点赞任务异常")
             self.errmsg.append(f"【{self.name}】 点赞任务异常,请检查日志")
 
-    @staticmethod
-    async def comment_to_a_dynamic(dynamic_id: int, message: str):
+    async def comment_to_a_dynamic(self, dynamic_id: int, message: str):
         """给一个动态发评论"""
-        credential = Credential(sessdata=config("SESSDATA"), bili_jct=config("bili_jct"), buvid3=config("buvid3"))
         await comment.send_comment(
             text=message,
             oid=dynamic_id,
             type_=CommentResourceType.DYNAMIC,
-            credential=credential,
+            credential=self.credential,
+        )
+
+    async def get_user_dynamic_list(self, host_mid: int):
+        """获取用户动态列表"""
+        return await dynamic.get_dynamic_page_info(
+            host_mid=host_mid,
+            credential=self.credential,
+            pn=1,
         )
 
     async def sendDanmaku(self):
@@ -265,9 +274,23 @@ class BiliUser:
             await self.getMedals()
 
     async def start(self):
-        dynamic_id = 876861197465419782
-        message = "小岁晚安~[UPOWER_1954091502_爱你]"
-        await self.comment_to_a_dynamic(dynamic_id=dynamic_id, message=message)
+        host_mid=1954091502
+        result: list[Dynamic] = await self.get_user_dynamic_list(host_mid=host_mid)
+        print('get_user_dynamic_list result=', result)
+        # for item in result:  # type: Dynamic
+        #     print(await item.get_info())
+        first_item = result[0]
+        print('id=',first_item.get_dynamic_id())
+        info = await first_item.get_info()
+        print('info=', info)
+        #item.modules.module_dynamic.major.opus.summary.text
+        text=glom(info, 'item.modules.module_dynamic.major.opus.summary.text')
+        print("text=", text)
+
+
+        # dynamic_id = 876861197465419782
+        # message = "小岁晚安~[UPOWER_1954091502_爱你]"
+        # await self.comment_to_a_dynamic(dynamic_id=dynamic_id, message=message)
         # if self.isLogin:
         #     tasks = []
         #

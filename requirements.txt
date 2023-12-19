@@ -6,3 +6,4 @@ apscheduler
 bilibili-api-python
 openai
 python-decouple
+glom
