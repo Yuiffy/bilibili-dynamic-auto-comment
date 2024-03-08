@@ -40,7 +40,7 @@ class BiliUser:
         self.medals = []  # 用户所有勋章
         self.medalsNeedDo = []  # 用户所有勋章，等级小于20的 未满1500的
 
-        self.session = ClientSession(timeout=ClientTimeout(total=3), trust_env = True)
+        self.session = ClientSession(timeout=ClientTimeout(total=3), trust_env=True)
         self.api = BiliApi(self, self.session)
 
         self.retryTimes = 0  # 点赞任务重试次数
@@ -78,7 +78,8 @@ class BiliUser:
             self.errmsg.append(f"【{self.name}】" + str(e))
         userInfo = await self.api.getUserInfo()
         self.log.log(
-            "INFO", "当前用户UL等级: {} ,还差 {} 经验升级".format(userInfo['exp']['user_level'], userInfo['exp']['unext'])
+            "INFO",
+            "当前用户UL等级: {} ,还差 {} 经验升级".format(userInfo['exp']['user_level'], userInfo['exp']['unext'])
         )
         self.message.append(
             f"【{self.name}】 UL等级: {userInfo['exp']['user_level']} ,还差 {userInfo['exp']['unext']} 经验升级"
@@ -132,7 +133,7 @@ class BiliUser:
                     await asyncio.gather(*tasks)
                     self.log.log(
                         "SUCCESS",
-                        f"{medal['anchor_info']['nick_name']} 点赞,分享成功 {index+1}/{len(self.medalsNeedDo)}",
+                        f"{medal['anchor_info']['nick_name']} 点赞,分享成功 {index + 1}/{len(self.medalsNeedDo)}",
                     )
                     await asyncio.sleep(max(self.config['LIKE_CD'], self.config['SHARE_CD']))
             else:
@@ -151,7 +152,8 @@ class BiliUser:
             self.log.log("SUCCESS", "点赞、分享任务完成")
             finallyMedals = [medal for medal in self.medalsNeedDo if medal['medal']['today_feed'] >= 200]
             failedMedals = [medal for medal in self.medalsNeedDo if medal['medal']['today_feed'] < 200]
-            msg = "20级以下牌子共 {} 个,完成任务 {} 个亲密度大于等于200".format(len(self.medalsNeedDo), len(finallyMedals))
+            msg = "20级以下牌子共 {} 个,完成任务 {} 个亲密度大于等于200".format(len(self.medalsNeedDo),
+                                                                                len(finallyMedals))
             self.log.log("INFO", msg)
             self.log.log(
                 "WARNING",
@@ -184,12 +186,12 @@ class BiliUser:
                 for index, medal in enumerate(failedMedals):
                     tasks = []
                     tasks.append(
-                        self.api.likeInteractV3(medal['room_info']['room_id'], medal['medal']['target_id'],self.mid)
+                        self.api.likeInteractV3(medal['room_info']['room_id'], medal['medal']['target_id'], self.mid)
                     ) if self.config['LIKE_CD'] else ...
                     await asyncio.gather(*tasks)
                     self.log.log(
                         "SUCCESS",
-                        f"{medal['anchor_info']['nick_name']} 点赞成功 {index+1}/{len(self.medalsNeedDo)}",
+                        f"{medal['anchor_info']['nick_name']} 点赞成功 {index + 1}/{len(self.medalsNeedDo)}",
                     )
                     await asyncio.sleep(self.config['LIKE_CD'])
             else:
@@ -197,7 +199,7 @@ class BiliUser:
                 allTasks = []
                 for medal in failedMedals:
                     allTasks.append(
-                        self.api.likeInteractV3(medal['room_info']['room_id'], medal['medal']['target_id'],self.mid)
+                        self.api.likeInteractV3(medal['room_info']['room_id'], medal['medal']['target_id'], self.mid)
                     ) if self.config['LIKE_CD'] else ...
                 await asyncio.gather(*allTasks)
             await asyncio.sleep(10)
@@ -233,7 +235,8 @@ class BiliUser:
         if not self.config['DANMAKU_CD']:
             self.log.log("INFO", "弹幕任务关闭")
             return
-        self.log.log("INFO", "弹幕打卡任务开始....(预计 {} 秒完成)".format(len(self.medals) * self.config['DANMAKU_CD']))
+        self.log.log("INFO",
+                     "弹幕打卡任务开始....(预计 {} 秒完成)".format(len(self.medals) * self.config['DANMAKU_CD']))
         n = 0
         for medal in self.medals:
             try:
@@ -274,19 +277,25 @@ class BiliUser:
             await self.getMedals()
 
     async def start(self):
-        host_mid=1954091502
+        host_mid = 1954091502
         result: list[Dynamic] = await self.get_user_dynamic_list(host_mid=host_mid)
         print('get_user_dynamic_list result=', result)
         # for item in result:  # type: Dynamic
         #     print(await item.get_info())
-        first_item = result[0]
-        print('id=',first_item.get_dynamic_id())
-        info = await first_item.get_info()
-        print('info=', info)
-        #item.modules.module_dynamic.major.opus.summary.text
-        text=glom(info, 'item.modules.module_dynamic.major.opus.summary.text')
-        print("text=", text)
+        result2 = []
+        for item in result:
+            print('id=', item.get_dynamic_id())
+            info = await item.get_info()
+            print('info=', info)
+            # item.modules.module_dynamic.major.opus.summary.text
+            text = glom(info, 'item.modules.module_dynamic.major.opus.summary.text', default='')
+            text2 = glom(info, 'item.modules.module_dynamic.desc.text', default='')
+            pub_time = glom(info, 'item.modules.module_author.pub_time', default='')
+            pub_ts = glom(info, 'item.modules.module_author.pub_ts', default='')
+            print("text=", text)
+            result2.append({'text': text, 'text2': text2, 'pub_time': pub_time, 'pub_ts': pub_ts})
 
+        print('result2=', result2)
 
         # dynamic_id = 876861197465419782
         # message = "小岁晚安~[UPOWER_1954091502_爱你]"
@@ -326,8 +335,8 @@ class BiliUser:
         self.message.append(f"【{self.name}】 今日亲密度获取情况如下（20级以下）：")
 
         for l, n in zip(
-            [nameList1, nameList2, nameList3, nameList4],
-            ["【1500】", "【1300至1400】", "【1200至1300】", "【1200以下】"],
+                [nameList1, nameList2, nameList3, nameList4],
+                ["【1500】", "【1300至1400】", "【1200至1300】", "【1200以下】"],
         ):
             if len(l) > 0:
                 self.message.append(f"{n}" + ' '.join(l[:5]) + f"{'等' if len(l) > 5 else ''}" + f' {len(l)}个')
