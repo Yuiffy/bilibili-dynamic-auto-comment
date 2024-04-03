@@ -277,7 +277,8 @@ class BiliUser:
             await self.getMedals()
 
     async def start(self):
-        host_mid = 1954091502
+        host_mid = 1954091502  # 岁己
+        # host_mid = 352111  # 獭耳
         result: list[Dynamic] = await self.get_user_dynamic_list(host_mid=host_mid)
         print('get_user_dynamic_list result=', result)
         # for item in result:  # type: Dynamic
