@@ -292,9 +292,12 @@ class BiliUser:
             text = glom(info, 'item.modules.module_dynamic.major.opus.summary.text', default='')
             text2 = glom(info, 'item.modules.module_dynamic.desc.text', default='')
             pub_time = glom(info, 'item.modules.module_author.pub_time', default='')
-            pub_ts = glom(info, 'item.modules.module_author.pub_ts', default='')
+            pub_ts = glom(info, 'item.modules.module_author.pub_ts', default='')  # 时间戳，如1712939391
             print("text=", text)
-            result2.append({'text': text, 'text2': text2, 'pub_time': pub_time, 'pub_ts': pub_ts})
+            obj = {'text': text, 'pub_time': pub_time}
+            if text2:
+                obj["text2"] = text2
+            result2.append(obj)
 
         print('result2=', result2)
 
